@@ -22,9 +22,10 @@ Keypad::~Keypad()
    delete[] this->voltages;
 }
 
-float Keypad::GetVoltage()
+int Keypad::GetVoltage()
 {
-  return (float)((analogRead(this->analogPin)/1024.0)*5.0);
+  return analogRead(this->analogPin);
+  //return (float)((analogRead(this->analogPin)/1024.0)*5.0);
 }
 
 bool Keypad::Range(int value, int compare, int range)
@@ -47,7 +48,7 @@ char Keypad::GetKey()
       for(int i = 0; i < this->numKeys; i++)
       {
        // if voltage is within (space between voltages)/4 it is a valid key press (/4 so it's less than the midpoint)
-       if (Range(reading2, this->voltages[i], (this->voltages[1]-this->voltages[0])/4
+       if (Range(reading2, this->voltages[i], (this->voltages[1]-this->voltages[0])/3
        ) && !this->isKeyDown)
        { 
           this->isKeyDown = true;
@@ -55,6 +56,6 @@ char Keypad::GetKey()
        }
      } 
   }
-  return ' ';
+  return NULL;
 }
 

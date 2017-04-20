@@ -8,7 +8,7 @@ class Keypad
     // character array index is pin# -1
     Keypad(const byte pin, char* characters, int characterCount);
     char GetKey();
-    float GetVoltage();
+    int GetVoltage();
     ~Keypad();
   private:
     int numKeys;
