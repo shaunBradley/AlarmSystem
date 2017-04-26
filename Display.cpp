@@ -5,7 +5,7 @@ AlarmDisplay::AlarmDisplay(uint8_t rs,  uint8_t enable, uint8_t d0, uint8_t d1, 
 {
 }
 
-void AlarmDisplay::SetTopMessage(char* msg)
+void AlarmDisplay::SetTopMessage(String msg)
 {
   this->topMsg = StrCpy(msg);
   PrintToLCD();
@@ -17,9 +17,9 @@ void AlarmDisplay::AppendToTopMessage(char c)
   PrintToLCD();
 }
 
-void AlarmDisplay::SetBottomMessage(char* c)
+void AlarmDisplay::SetBottomMessage(String msg)
 {
-  this->bottomMsg = StrCpy(c);
+  this->bottomMsg = StrCpy(msg);
   PrintToLCD();
 }
 
@@ -29,7 +29,7 @@ void AlarmDisplay::AppendToBottomMessage(char c)
   PrintToLCD();
 }
 
-char* AlarmDisplay::StrAppend(char* str, char c)
+char* AlarmDisplay::StrAppend(const char* str, char c)
 {    
   char* newStr;
   if(str)
@@ -43,12 +43,11 @@ char* AlarmDisplay::StrAppend(char* str, char c)
     }
     newStr[len] = c;
     newStr[len+1] = '\0';
-    delete[] str;
   }
   return newStr;
 }
 
-char* AlarmDisplay::StrCpy(char* str)
+char* AlarmDisplay::StrCpy(String &str)
 {
   char* newStr;
   if(str)
@@ -69,9 +68,9 @@ void AlarmDisplay::PrintToLCD()
 {
    this->clear();
    this->setCursor(0, 0);
-   if(this->topMsg != NULL){this->print(this->topMsg); }
+   if(this->topMsg){this->print(this->topMsg); }
    this->setCursor(0, 1);
-   if(this->bottomMsg != NULL){this->print(this->bottomMsg);}
+   if(this->bottomMsg){this->print(this->bottomMsg);}
 }
 
 AlarmDisplay::~AlarmDisplay()

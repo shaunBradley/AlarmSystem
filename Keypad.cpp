@@ -22,10 +22,9 @@ Keypad::~Keypad()
    delete[] this->voltages;
 }
 
-int Keypad::GetVoltage()
+float Keypad::GetVoltage()
 {
-  return analogRead(this->analogPin);
-  //return (float)((analogRead(this->analogPin)/1024.0)*5.0);
+  return (float)((analogRead(this->analogPin)/1024.0)*5.0);
 }
 
 bool Keypad::Range(int value, int compare, int range)
