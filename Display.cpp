@@ -7,25 +7,31 @@ AlarmDisplay::AlarmDisplay(uint8_t rs,  uint8_t enable, uint8_t d0, uint8_t d1, 
 
 void AlarmDisplay::SetTopMessage(String msg)
 {
+  if(this->topMsg){ delete[] topMsg; }
   this->topMsg = StrCpy(msg);
   PrintToLCD();
 }
 
 void AlarmDisplay::AppendToTopMessage(char c)
 {
+  char* temp = this->topMsg;
   this->topMsg = StrAppend(this->topMsg, c);
+  delete[] temp;
   PrintToLCD();
 }
 
 void AlarmDisplay::SetBottomMessage(String msg)
 {
+  if(this->bottomMsg){delete[] this->bottomMsg;}
   this->bottomMsg = StrCpy(msg);
   PrintToLCD();
 }
 
 void AlarmDisplay::AppendToBottomMessage(char c)
 {
+  char* temp = this->bottomMsg;
   this->bottomMsg = StrAppend(this->bottomMsg, c);
+  delete[] temp;
   PrintToLCD();
 }
 

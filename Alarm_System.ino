@@ -6,7 +6,7 @@
 /*********************************NOTES*********************************/
 //   sending  print(arg) via serial will print arg to lcd              //
 //   if you want to send a with close bracket then use excape char  '\'//
-//   sending sleep(true) will sleep the uno                            //
+//   sending sleep(true) will sleep the lcd                            //
 //   sending sleep(flalse) will wake it up                             //
 /***********************************************************************/
 
